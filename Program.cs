@@ -10,8 +10,10 @@ namespace example_pdf_to_tiff_dotnet
     {
         static void Main(string[] args)
         {
+            // Create each page as one TIFF image
             IndividualTiffPage();
 
+            // Creates a multipage TIFF with all the PDF pages
             MultiPageTiffFile();
         }
 
@@ -19,8 +21,10 @@ namespace example_pdf_to_tiff_dotnet
         // Use the ceTe.DynamicPDF.Rasterizer namespace for the PdfRasterizer class.
         private static void IndividualTiffPage()
         {
+            // Create a PdfRasterizer object using the source PDF to be converted to TIFF image
             PdfRasterizer rasterizer = new PdfRasterizer(GetResourcePath("doc-a.pdf"));
 
+            // Call the Draw method with output image name, image format and the DPI
             rasterizer.Draw("EachPage.tiff", ImageFormat.TiffWithLzw, ImageSize.Dpi150);
         }
 
@@ -28,8 +32,10 @@ namespace example_pdf_to_tiff_dotnet
         // Use the ceTe.DynamicPDF.Rasterizer namespace for the PdfRasterizer class.
         private static void MultiPageTiffFile()
         {
+            // Create a PdfRasterizer object using the source PDF to be converted to multipage TIFF image
             PdfRasterizer rasterizer = new PdfRasterizer(GetResourcePath("doc-a.pdf"));
 
+            // Call the DrawToMultiPageTiff method with output image name, image format and the DPI
             rasterizer.DrawToMultiPageTiff("MultiPage.tiff", ImageFormat.TiffWithCcitGroup4, ImageSize.Dpi150);
         }
 
